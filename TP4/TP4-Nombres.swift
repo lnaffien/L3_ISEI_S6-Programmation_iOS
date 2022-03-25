@@ -51,6 +51,39 @@ func estDansLIntervalle(val : Float, i1 : Float, i2 : Float) -> Bool
   }
 }
 
+func estPremier(val : Int) -> Bool
+{
+  if(val > 1)
+  {
+    for i in stride(from : 2, to : val, by : 1)
+    {
+      if(val % i == 0)
+      {
+        return false
+      }
+    }
+  }
+  return true  
+}
+
+func estParfait(val : Int) -> Bool
+{
+  if(val < 1)
+  {
+    return false
+  }
+  
+  var somme : Int = 0
+  for i in stride(from : 1, to : val, by : 1)
+  {
+    if(val % i == 0)
+    {
+      somme += i
+    }
+  }
+  return somme == val
+}
+
 
 
 let var1 : Float = 3.9
@@ -65,6 +98,8 @@ print("4 : Division")
 print("5 : Maximum")
 print("6 : Factorielle")
 print("7 : Intervalle")
+print("8 : Premier")
+print("9 : Parfait")
 var op = Int(readLine()!)!
 var res : Float
 
@@ -84,7 +119,11 @@ switch op
     break
   case 7 : res = estDansLIntervalle(val:var2, i1:var3, i2:var1) ? 1 : 0
     break
+  case 8 : res = estPremier(val: Int(var2)) ? 1 : 0
+    break
+  case 9 : res = estParfait(val: Int(6)) ? 1 : 0
   default : 
+  
     print("Erreur : numéro d'opération invalide")
     exit(0)
 }
